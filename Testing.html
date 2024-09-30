@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physician Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .overview, .summaries, .rating, .cooldown, .personalization {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px;
+            cursor: pointer;
+            background: #ddd;
+            border-radius: 5px;
+        }
+        .tab.active {
+            background: #77aaff;
+            color: #fff;
+        }
+        .summary-content {
+            display: none;
+        }
+        .summary-content.active {
+            display: block;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: space-around;
+            width: 150px;
+            margin: 20px auto;
+        }
+        .star {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .progress-bar {
+            width: 100%;
+            background: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .progress {
+            height: 20px;
+            background: #77aaff;
+            width: 50%;
+        }
+        .timer {
+            font-size: 18px;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Physician Dashboard</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="overview">
+            <h2>Patient Overview</h2>
+            <p>Age: 45</p>
+            <p>Gender: Male</p>
+            <p>Current Diagnosis: Hypertension</p>
+            <p>Recent Treatments: Medication A, Medication B</p>
+        </div>
+        <div class="summaries">
+            <h2>AI Summaries</h2>
+            <div class="tabs">
+                <div class="tab active" data-target="summary-c">Version C</div>
+                <div class="tab" data-target="summary-y">Version Y</div>
+                <div class="tab" data-target="summary-x">Version X</div>
+            </div>
+            <div id="summary-c" class="summary-content active">
+                <p>Summary C: Medical history, diagnosis, and treatment plans...</p>
+            </div>
+            <div id="summary-y" class="summary-content">
+                <p>Summary Y: Medical history, diagnosis, and treatment plans...</p>
+            </div>
+            <div id="summary-x" class="summary-content">
+                <p>Summary X: Medical history, diagnosis, and treatment plans...</p>
+            </div>
+        </div>
+        <div class="rating">
+            <h2>Rate the Summary</h2>
+            <div class="star-rating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+            </div>
+            <textarea placeholder="Optional comment..." rows="4" style="width: 100%;"></textarea>
+            <div class="progress-bar">
+                <div class="progress" style="width: 50%;"></div>
+            </div>
+        </div>
+        <div class="cooldown">
+            <h2>Cooldown Timer</h2>
+            <div class="timer">Next review available in: 10:00</div>
+        </div>
+        <div class="personalization">
+            <h2>Personalization Options</h2>
+            <p>Customize the types of information emphasized in the summaries.</p>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.summary-content').forEach(content => content.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-target')).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
