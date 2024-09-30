@@ -3,27 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submission Success</title>
+    <title>Physician Dashboard</title>
     <style>
-
-body {
-            font-family: Helvetica; /* Fallback to Arial */
-            background-color: #f4f4f4;
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            background-color: #f4f4f4;
         }
-        /* Light gray top bar */
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .patient-overview {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .tabs {
+            margin-top: 20px;
+        }
+        .tab {
+            display: none;
+        }
+        .tab-label {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 5px;
+            background: #ddd;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 0 5px 5px 5px;
+        }
+        .tab:checked + .tab-label {
+            background: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        .tab:checked + .tab-label + .tab-content {
+            display: block;
+        }
+        .rating {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .stars {
+            display: flex;
+            margin: 10px 0;
+        }
+        .stars input {
+            display: none; /* Hide the radio buttons */
+        }
+        .stars label {
+            font-size: 30px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .stars input:checked ~ label {
+            color: #f5b301;
+        }
+        .stars label:hover,
+        .stars label:hover ~ label {
+            color: #f5b301;
+        }
+        .stars label:active {
+            transform: scale(1.1); /* Slightly scale up on click */
+        }
+        .submit-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #c8102e;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #882121;
+        }
+        
         .top-bar {
             background-color: lightgray;
             width: 100%;
             padding: 15px;
             text-align: center;
-            position: fixed;
+            position: absolute;
             top: 10px;
             z-index: 1.2;
         }
@@ -35,88 +131,119 @@ body {
             padding: 0.5px;
             width: 100%;
             text-align: center;
-            position: fixed;
+            position: absolute;
             top: 0px; /* Adjust this value based on the height of the top bar */
             z-index: 1;
-        }
-        /* Content container */
-        .content-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 300px;
-            margin-top: 20px;
-            text-align: center;
-        }
-        .content-container h2 {
-            margin-bottom: 15px;
-        }
-        .content-container p {
-            margin-bottom: 10px;
-        }
-        /* Red banner at the bottom */
-         /* Red banner at the bottom */
-         .footer-red-banner {
-            background-color: #c8102e;
-            color: white;
-            padding: 20px;
-            width: 100%;
-            text-align: center;
-            position: fixed;
-            bottom: 0px;
-        }
-        /* Light gray footer */
-        .footer-lightgray {
-            background-color: lightgray;
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            bottom: 10px;
         }
     </style>
 </head>
 <body>
-
     <!-- Top Section with Light Gray Background -->
     <div class="top-bar">
-        <h1>University of Calgary</h1>
+        <a href="https://www.ucalgary.ca">
+            <button style="background: none; border: none; padding: 0;">
+                <p>
+                <img src="UC-horz-rgb-e1674580037530-1024x278.jpg" alt="University of Calgary" style="width: 300px; height: 100;">
+                </p>
+            </button>
+        </a>
     </div>
 
     <!-- Red Banner Below the Light Gray Section -->
     <div class="red-banner">
-        <p>Welcome to the University of Calgary Portal</p>
+        <p></p>
     </div>
 
-    <!-- Content Section -->
-    <div class="content-container">
-        <h2>Submission Received</h2>
-        <p>Thank you for submitting your information!</p>
-        <p><strong>Name:</strong> <span id="name"></span></p>
-        <p><strong>Email:</strong> <span id="email"></span></p>
-    </div>
+    <header>
+        <div class="container">
+            <h1>Physician Dashboard</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="patient-overview">
+            <h2>Patient Overview</h2>
+            <p>Temp</p>
+            <p>Temp</p>
+            <p>Temp</p>
+            <p>Temp</p>
+        </div>
+        <div class="tabs">
+            <input type="radio" id="tab1" name="tab" class="tab" checked>
+            <label for="tab1" class="tab-label">Version C</label>
+            <div class="tab-content">
+                <h3>Summary C</h3>
+                <p>Medical history, diagnosis, and treatment plans...</p>
+                <div class="rating">
+                    <div class="stars">
+                        <input type="radio" id="star5-c" name="rating-c" value="5" onchange="checkAllRatings()"><label for="star5-c">&#9733;</label>
+                        <input type="radio" id="star4-c" name="rating-c" value="4" onchange="checkAllRatings()"><label for="star4-c">&#9733;</label>
+                        <input type="radio" id="star3-c" name="rating-c" value="3" onchange="checkAllRatings()"><label for="star3-c">&#9733;</label>
+                        <input type="radio" id="star2-c" name="rating-c" value="2" onchange="checkAllRatings()"><label for="star2-c">&#9733;</label>
+                        <input type="radio" id="star1-c" name="rating-c" value="1" onchange="checkAllRatings()"><label for="star1-c">&#9733;</label>
+                    </div>
+                    <button type="submit-btn">Submit</button>
+                </div>
+            </div>
 
-    <!-- Red Banner at the Bottom -->
-    <div class="footer-red-banner">
-        <p>Explore More at the University of Calgary</p>
-    </div>
+            <input type="radio" id="tab2" name="tab" class="tab">
+            <label for="tab2" class="tab-label">Version B</label>
+            <div class="tab-content">
+                <h3>Summary B</h3>
+                <p>Medical history, diagnosis, and treatment plans...</p>
+                <div class="rating">
+                    <div class="stars">
+                        <input type="radio" id="star5-b" name="rating-b" value="5" onchange="checkAllRatings()"><label for="star5-b">&#9733;</label>
+                        <input type="radio" id="star4-b" name="rating-b" value="4" onchange="checkAllRatings()"><label for="star4-b">&#9733;</label>
+                        <input type="radio" id="star3-b" name="rating-b" value="3" onchange="checkAllRatings()"><label for="star3-b">&#9733;</label>
+                        <input type="radio" id="star2-b" name="rating-b" value="2" onchange="checkAllRatings()"><label for="star2-b">&#9733;</label>
+                        <input type="radio" id="star1-b" name="rating-b" value="1" onchange="checkAllRatings()"><label for="star1-b">&#9733;</label>
+                    </div>
+                    <button type="submit-btn">Submit</button>
+                </div>
+            </div>
 
-    <!-- Light Gray Footer Section -->
-    <div class="footer-lightgray">
-        <p>© 2024 University of Calgary. All rights reserved.</p>
+            <input type="radio" id="tab3" name="tab" class="tab">
+            <label for="tab3" class="tab-label">Version A</label>
+            <div class="tab-content">
+                <h3>Summary A</h3>
+                <p>Medical history, diagnosis, and treatment plans...</p>
+                <div class="rating">
+                    <div class="stars">
+                        <input type="radio" id="star5-a" name="rating-a" value="5" onchange="checkAllRatings()"><label for="star5-a">&#9733;</label>
+                        <input type="radio" id="star4-a" name="rating-a" value="4" onchange="checkAllRatings()"><label for="star4-a">&#9733;</label>
+                        <input type="radio" id="star3-a" name="rating-a" value="3" onchange="checkAllRatings()"><label for="star3-a">&#9733;</label>
+                        <input type="radio" id="star2-a" name="rating-a" value="2" onchange="checkAllRatings()"><label for="star2-a">&#9733;</label>
+                        <input type="radio" id="star1-a" name="rating-a" value="1" onchange="checkAllRatings()"><label for="star1-a">&#9733;</label>
+                    </div>
+                    <button type="submit-btn">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Submit Button -->
+        <div class="final-submit">
+            <button id="finalSubmitBtn" class="submit-btn" disabled onclick="openFinal()">Submit All Ratings</button>
+            <p id="ratingError" style="color: red; display: none;">Please rate all versions before submitting.</p>
+        </div>
     </div>
 
     <script>
-        // Get the submitted values from the URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name');
-        const email = urlParams.get('email');
+        function checkAllRatings() {
+            const ratings = document.querySelectorAll('.stars input');
+            const allRated = Array.from(ratings).every(radio => radio.checked);
+            
+            document.getElementById('finalSubmitBtn').disabled = !allRated;
+            document.getElementById('ratingError').style.display = allRated ? 'none' : 'block';
+        }
 
-        // Display the submitted values
-        document.getElementById('name').textContent = name;
-        document.getElementById('email').textContent = email;
+        function openFinal() {
+            window.location.href = 'final.html'; // Open the final.html file
+        }
+
+        // Add event listeners to enable the final submit button
+        document.querySelectorAll('.stars input').forEach(input => {
+            input.addEventListener('change', checkAllRatings);
+        });
     </script>
-
 </body>
 </html>
