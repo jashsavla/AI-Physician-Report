@@ -6,9 +6,9 @@
     <title>Physician Dashboard</title>
     <style>
         :root {
-            --primary-color: #610707;
-            --secondary-color: #ff0000;
-            --background-color: #f0e9e9;
+            --primary-color: #be2f2f;
+            --secondary-color: #be2f2f;
+            --background-color: #f4f4f4;
             --text-color: #333;
         }
         body {
@@ -18,62 +18,52 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
+        }
+        .bottom-bar {
+            text-align: center;
+            padding: 10px;
+            background-color: #d3d3d3;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
         }
         .top-bar {
             text-align: center;
-            padding: 10px;
-            background-color: white;
+            padding: 30px;
+            background-color: #be2f2f;
+            width: 100%;
+            position: absolute;
+            top: 0;
         }
-        .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .main-content {
+        .dashboard {
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            gap: 100px;
+            margin-top: 50px;
         }
-
-        .container, .container-summery {
+        .container, .container-summary {
             flex: 1;
-            margin: 20px;
-            padding: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-            width: 100%;
+            padding: 30px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            height: 400px;
+            box-sizing: border-box;
         }
-
-        .container {
-            margin-left: 20px;
-        }
-
-        .container-summery {
-            margin-right: 20px;
+        .container-summary {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-            width: 100%;
         }
         h1 { color: var(--primary-color); text-align: center; }
-        .rating { display: flex; gap: 30px; align-items: center; margin-bottom: 20px; }
-        .stars { display: inline-block; cursor: pointer; }
-        .star { font-size: 24px; color: #ddd; }
+        .rating { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .stars { display: flex; justify-content: center; cursor: pointer; }
+        .star { font-size: 24px; color: #c5bfbf; }
         .star.selected { color: gold; }
         .submit-btn, #finalSubmitBtn {
             background-color: var(--primary-color);
@@ -83,9 +73,11 @@
             border-radius: 30px;
             cursor: pointer;
             margin-top: 20px;
-            width: 40%;
+            width: 50%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .hidden { display: none; }
     </style>
 </head>
 <body>
@@ -94,50 +86,56 @@
             <img src="UC-horz-rgb-e1674580037530-1024x278.jpg" alt="University of Calgary" style="width: 300px;">
         </a>
     </div>
-    <div class="container">
-        <h1>Physician Rating</h1>
-        <!-- Your rating sections -->
-        <div class="rating" id="rating-a">
-            <span>Rate Summary A:</span>
-            <div class="stars" id="rating-a-stars">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
-            </div>
+    
+    <div class="dashboard">
+        <div class="container-summary">
+            <h1>Patient Summary</h1>
+            <p>Summary A: temp</p>
+            <p>Summary B: temp</p>
+            <p>Summary C: temp</p>
         </div>
-        <div class="rating" id="rating-a">
-            <span>Rate Summary A:</span>
-            <div class="stars" id="rating-a-stars">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
+
+        <div class="container">
+            <h1>Physician Rating</h1>
+            <div class="rating" id="rating-a">
+                <span>Rate Summary A:</span>
+                <div class="stars" id="rating-a-stars">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
             </div>
-        </div>
-        <div class="rating" id="rating-a">
-            <span>Rate Summary A:</span>
-            <div class="stars" id="rating-a-stars">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
+            <div class="rating" id="rating-b">
+                <span>Rate Summary B:</span>
+                <div class="stars" id="rating-b-stars">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
             </div>
+            <div class="rating" id="rating-c">
+                <span>Rate Summary C:</span>
+                <div class="stars" id="rating-c-stars">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+            </div>
+            <button id="finalSubmitBtn" onclick="submitAllRatings()">Submit All Ratings</button>
         </div>
-        <!-- Repeat ratings as needed -->
-        <button id="finalSubmitBtn" onclick="submitAllRatings()">Submit All Ratings</button>
     </div>
-<div class="container-summery">
-        <h1>Patient Summary</h1>
-        <p>Summary A: 5</p>
-        <p>Summary B: 4</p>
-        <p>Summary C: 3</p>
-        <p>Summary D: 2</p>
-        <p>Summary E: 1</p>
+    <div class="bottom-bar">
+        <p>&copy; 2024 University of Calgary</p>
+    </div>
+
     <script>
+        // Star rating selection logic
         document.querySelectorAll('.stars').forEach(starsContainer => {
             starsContainer.addEventListener('click', function (e) {
                 if (e.target.classList.contains('star')) {
@@ -150,11 +148,17 @@
         });
 
         function submitAllRatings() {
+            // Gather selected ratings
             const ratingA = document.querySelector('#rating-a .selected')?.dataset.value || '';
-            // Get other ratings similarly
+            const ratingB = document.querySelector('#rating-b .selected')?.dataset.value || '';
+            const ratingC = document.querySelector('#rating-c .selected')?.dataset.value || '';
+            
+            // Get name and email from URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             const name = urlParams.get('name');
             const email = urlParams.get('email');
+
+            // Create a form to submit to Formspree
             const form = document.createElement('form');
             form.action = "https://formspree.io/f/mzzbgbwr";
             form.method = "POST";
@@ -163,7 +167,8 @@
                 { name: 'name', value: name },
                 { name: 'email', value: email },
                 { name: 'ratingA', value: ratingA },
-                // Include other ratings
+                { name: 'ratingB', value: ratingB },
+                { name: 'ratingC', value: ratingC }
             ];
 
             inputs.forEach(inputData => {

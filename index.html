@@ -16,11 +16,21 @@
             height: 100vh;
             flex-direction: column;
         }
-        .top-bar, .footer-lightgray {
-            background-color: lightgray;
+        .top-bar {
+            text-align: center;
+            padding: 30px;
+            background-color: rgb(190, 47, 47);
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+        .footer-lightgray {
+            background-color: #d3d3d3;
             width: 100%;
             text-align: center;
-            padding: 15px;
+            padding: 10px;
+            position: absolute;
+            bottom: 0
         }
         .form-container {
             background-color: white;
@@ -30,7 +40,7 @@
             width: 40%;
             text-align: center;
         }
-        input, button { width: 100%; padding: 10px; margin-top: 10px; }
+        input, button { width: 50%; padding: 10px; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -45,6 +55,8 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+    <div class="footer-lightgray">
+        <p>&copy; 2024 University of Calgary</p>
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             const name = document.getElementById('name').value;

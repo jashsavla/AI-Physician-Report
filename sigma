@@ -1,0 +1,28 @@
+function submitAllRatings() {
+            const ratingA = document.querySelector('#rating-a .selected')?.dataset.value || '';
+            // Get other ratings similarly
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            const email = urlParams.get('email');
+            const form = document.createElement('form');
+            form.action = "https://formspree.io/f/mzzbgbwr";
+            form.method = "POST";
+
+            const inputs = [
+                { name: 'name', value: name },
+                { name: 'email', value: email },
+                { name: 'ratingA', value: ratingA },
+                // Include other ratings
+            ];
+
+            inputs.forEach(inputData => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = inputData.name;
+                input.value = inputData.value;
+                form.appendChild(input);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
+        }
